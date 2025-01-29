@@ -9,14 +9,21 @@ const inputBtn = document.getElementById("input-btn")
 
 const ulEl = document.getElementById("ul-el")
 
-inputBtn.addEventListener("click", function() {
+inputBtn.addEventListener("click", function () {
     myleads.push(inputEl.value)
-renderLeads()    
+    inputEl.value = ""
+    renderLeads()
 })
 function renderLeads() {
     let listItems = ""
     for (let i = 0; i < myleads.length; i++) {
-        listItems += "<li>" + myleads[i] + "</li>"
+        listItems += `
+            <li>
+                <a target='_blank' href='${myleads[i]}'>
+                    ${myleads[i]}
+                </a>
+            </li>
+        `
     }
     ulEl.innerHTML = listItems
 }
